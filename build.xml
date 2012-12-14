@@ -2,7 +2,7 @@
 
 <project name="Demo Project" default="build">
  <target name="build"
-   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb"/>
+   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb,gitdeploy"/>
 
  <target name="build-parallel"
    depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
@@ -130,6 +130,17 @@
    <arg path="${basedir}/src" />
    <arg value="--output" />
    <arg path="${basedir}/build/code-browser" />
+  </exec>
+ </target>
+ 
+ <target name="gitdeploy" description="Deploy from Github">
+  <exec executable="cd">
+   <arg path="/home/www/employeedb.com/public/jenkins-dummy-project" />
+  </exec>
+  <exec executable="git">
+   <arg value="pull" />
+   <arg value="origin" />
+   <arg path="master" />
   </exec>
  </target>
 </project>
