@@ -1,1 +1,1 @@
-Dummy project
+Dummy Project
